@@ -1,5 +1,7 @@
 #include "methods.h"
 #include <stdio.h>
+#include <iostream>
+#include <sstream>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,14 +12,61 @@
 int _factorDecPlaces = 10 * DECPLACES;
 
 
+std::string doubleToString(double dbl) {	
+    //std::cout << dbl <<'\n';
+
+	std::ostringstream strs;
+	strs << dbl;
+	std::string number = strs.str();
+    return number;
+}
+
 double toDouble(std::string s){
     std::replace(s.begin(), s.end(), ',', '.');
-    return std::atof(s.c_str());
+    double dbl;
+
+
+    //std::cout << s << '\n';
+    sscanf(s.c_str(),"%lf", &dbl);
+
+
+    //std::cout << dbl << '\n';
+    return dbl;
+
 }
 
 
 
-double handleNumber(double number, int remaining) {
+double handleNumber(double dbl, int remaining) {
+
+    std::string number = doubleToString(dbl);
+    
+    std::string returnValue = "";
+    bool sep=false;
+
+        int num;
+    
+
+    //std::cout << number << '\n';
+
+    for(int i = 0; i < strlen(number.c_str()); i++) {
+        if(number[i] == '.') {
+            returnValue += '.';
+            continue;
+        }
+        //std::cout << number.substr(i,1) << '\n';
+        num = std::stoi(number.substr(i,1));
+        if(num%2 == remaining){
+            returnValue += number[i];
+        }
+
+    }
+    ////std::cout << returnValue << '\n';
+    return std::stof(returnValue);
+
+
+    /*
+
     number = roundf(number*_factorDecPlaces)/_factorDecPlaces;
     //printf("%.3f\n",number);
 
@@ -63,6 +112,7 @@ double handleNumber(double number, int remaining) {
     
     
     return returnValue;
+    */
 
 }
 
@@ -78,10 +128,8 @@ double odd(double number){
 
 /*
 int main (int argc, char** args){
-    double f = 0.816541;
-
-    printf("%.3f\n",f);
-    f=odd(f);
-    printf("%.3f\n",f);
+    double test =12367.1237f;
+    double f =odd(test);
+    printf("%f\n",f);
 }
 */
