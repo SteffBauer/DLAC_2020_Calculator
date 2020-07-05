@@ -26,7 +26,6 @@ NONZERO [1-9]
                                 yyerror("More than one zero\n");
                             }
 "+"                         {
-    printf("Plus");
                                 return PLUS ;
                             }
 "-"                         {

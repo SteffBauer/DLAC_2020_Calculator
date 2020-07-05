@@ -33,20 +33,15 @@ Line: expr END  {
                 };
 
 
-
-
 expr:  term1
-    |  term1 PLUS term2 { $$ = $1 + $3; };
-    |  term1 MINUS term2 { $$ = $1 - $3; };
+    |  expr PLUS term1 { $$ = $1 + $3; };
+    |  expr MINUS term1 { $$ = $1 - $3; };
     ;
 term1: factor1
-    |  factor1 MULT factor2 { $$ = $1 * $3; };
-    |  factor1 DIVIDE factor2 { $$ = $1 / $3; };
+    |  term1 MULT factor1 { $$ = $1 * $3; };
+    |  term1 DIVIDE factor1 { $$ = $1 / $3; };
     ;
-term2: factor2
-    |  factor2 MULT factor2 { $$ = $1 * $3; };
-    |  factor2 DIVIDE factor2 { $$ = $1 / $3; };
-    ;
+
 factor1:  factor2 
     |     negative
     ;

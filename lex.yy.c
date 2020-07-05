@@ -770,55 +770,54 @@ case 4:
 YY_RULE_SETUP
 #line 28 "calc.l"
 {
-    printf("Plus");
                                 return PLUS ;
                             }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 32 "calc.l"
+#line 31 "calc.l"
 {
                                 return MINUS;
                             }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 35 "calc.l"
+#line 34 "calc.l"
 {
                                 return MULT;
                             }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 38 "calc.l"
+#line 37 "calc.l"
 {
                                 return DIVIDE;
                             }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 "calc.l"
+#line 40 "calc.l"
 {
                                 return BR_LEFT;
                             }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 44 "calc.l"
+#line 43 "calc.l"
 {
                                 return BR_RIGHT;
                             }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 47 "calc.l"
+#line 46 "calc.l"
 {
                                 return OP_EVEN;
                             }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 50 "calc.l"
+#line 49 "calc.l"
 {
                                 return OP_ODD;
                             }
@@ -826,21 +825,21 @@ YY_RULE_SETUP
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 53 "calc.l"
+#line 52 "calc.l"
 {
                                 return END;
                             }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 56 "calc.l"
+#line 55 "calc.l"
 { 
                                 /* Do nothing at whitespace - eat it! */
                             }    
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 59 "calc.l"
+#line 58 "calc.l"
 {
                                 printf("Exiting the calculator.\n"); 
                                 return 0;    
@@ -848,17 +847,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 63 "calc.l"
+#line 62 "calc.l"
 {
                                 yyerror("Unrecognized token\n");  /* Is there anything else? Fail on it! */
                             }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 67 "calc.l"
+#line 66 "calc.l"
 ECHO;
 	YY_BREAK
-#line 862 "lex.yy.c"
+#line 861 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1863,6 +1862,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 67 "calc.l"
+#line 66 "calc.l"
 
 
