@@ -52,9 +52,7 @@ factor2:  BR_LEFT expr BR_RIGHT { $$ = $2; };
 function:  op_even 
     |      op_odd
     ;
-op_even:  OP_EVEN BR_LEFT expr BR_RIGHT { printf("%f\n",$3); 
-                                          $$ = even($3); 
-                                        };
+op_even:  OP_EVEN BR_LEFT expr BR_RIGHT { $$ = even($3); };
     ;
 op_odd:  OP_ODD BR_LEFT expr BR_RIGHT { $$ = odd($3); };
     ;

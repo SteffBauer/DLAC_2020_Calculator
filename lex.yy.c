@@ -366,8 +366,8 @@ struct yy_trans_info
 static const flex_int16_t yy_accept[32] =
     {   0,
         0,    0,   17,   15,   13,   12,    8,    9,    6,    4,
-        1,    5,    7,    2,    2,   14,   14,   15,   13,    1,
-        1,    3,    2,    2,    0,    0,    3,    0,   11,   10,
+       15,    5,    7,    2,    2,   14,   14,   15,   13,    1,
+        0,    3,    2,    2,    0,    0,    3,    0,   11,   10,
         0
     } ;
 
@@ -463,12 +463,13 @@ char *yytext;
 #line 4 "calc.l"
 #include "iostream"
 #include "string"
+#include "calc.tab.h"
+#include "./libs/methods.h"
 using namespace std;
 
 extern int yyerror (char const *s);
-#include "calc.tab.h"
-#line 471 "lex.yy.c"
 #line 472 "lex.yy.c"
+#line 473 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -685,10 +686,10 @@ YY_DECL
 		}
 
 	{
-#line 17 "calc.l"
+#line 18 "calc.l"
 
 
-#line 692 "lex.yy.c"
+#line 693 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -747,77 +748,77 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 19 "calc.l"
+#line 20 "calc.l"
 {
-                                yylval=atof(yytext); return DOUBLE;          
+                                yylval=toDouble(yytext); return DOUBLE;          
                             }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 22 "calc.l"
+#line 23 "calc.l"
 {   
                                 yylval=atoi(yytext); return INT; 
                             }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 25 "calc.l"
+#line 26 "calc.l"
 {
                                 yyerror("More than one zero\n");
                             }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 28 "calc.l"
+#line 29 "calc.l"
 {
                                 return PLUS ;
                             }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 31 "calc.l"
+#line 32 "calc.l"
 {
                                 return MINUS;
                             }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 34 "calc.l"
+#line 35 "calc.l"
 {
                                 return MULT;
                             }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 37 "calc.l"
+#line 38 "calc.l"
 {
                                 return DIVIDE;
                             }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 40 "calc.l"
+#line 41 "calc.l"
 {
                                 return BR_LEFT;
                             }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 43 "calc.l"
+#line 44 "calc.l"
 {
                                 return BR_RIGHT;
                             }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 46 "calc.l"
+#line 47 "calc.l"
 {
                                 return OP_EVEN;
                             }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 49 "calc.l"
+#line 50 "calc.l"
 {
                                 return OP_ODD;
                             }
@@ -825,21 +826,21 @@ YY_RULE_SETUP
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 52 "calc.l"
+#line 53 "calc.l"
 {
                                 return END;
                             }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 55 "calc.l"
+#line 56 "calc.l"
 { 
                                 /* Do nothing at whitespace - eat it! */
                             }    
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 58 "calc.l"
+#line 59 "calc.l"
 {
                                 printf("Exiting the calculator.\n"); 
                                 return 0;    
@@ -847,17 +848,17 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 62 "calc.l"
+#line 63 "calc.l"
 {
                                 yyerror("Unrecognized token\n");  /* Is there anything else? Fail on it! */
                             }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 66 "calc.l"
+#line 67 "calc.l"
 ECHO;
 	YY_BREAK
-#line 861 "lex.yy.c"
+#line 862 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1862,6 +1863,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 66 "calc.l"
+#line 67 "calc.l"
 
 

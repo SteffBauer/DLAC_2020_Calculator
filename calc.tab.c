@@ -446,7 +446,7 @@ static const yytype_uint8 yyrline[] =
 {
        0,    27,    27,    28,    30,    31,    36,    37,    38,    40,
       41,    42,    45,    46,    48,    49,    50,    52,    53,    55,
-      59,    62,    64,    65
+      57,    60,    62,    63
 };
 #endif
 
@@ -1285,38 +1285,36 @@ yyreduce:
 
   case 19:
 #line 55 "calc.y"
-    { printf("%f\n",yyvsp[-1]); 
-                                          yyval = even(yyvsp[-1]); 
-                                        }
-#line 1292 "calc.tab.c"
+    { yyval = even(yyvsp[-1]); }
+#line 1290 "calc.tab.c"
     break;
 
   case 20:
-#line 59 "calc.y"
+#line 57 "calc.y"
     { yyval = odd(yyvsp[-1]); }
-#line 1298 "calc.tab.c"
+#line 1296 "calc.tab.c"
     break;
 
   case 21:
-#line 62 "calc.y"
+#line 60 "calc.y"
     {yyval=-yyvsp[0];}
-#line 1304 "calc.tab.c"
+#line 1302 "calc.tab.c"
     break;
 
   case 22:
-#line 64 "calc.y"
+#line 62 "calc.y"
     {yyval=yyvsp[0];}
-#line 1310 "calc.tab.c"
+#line 1308 "calc.tab.c"
     break;
 
   case 23:
-#line 65 "calc.y"
+#line 63 "calc.y"
     {yyval=yyvsp[0];}
-#line 1316 "calc.tab.c"
+#line 1314 "calc.tab.c"
     break;
 
 
-#line 1320 "calc.tab.c"
+#line 1318 "calc.tab.c"
 
       default: break;
     }
@@ -1548,7 +1546,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 69 "calc.y"
+#line 67 "calc.y"
 
 
 

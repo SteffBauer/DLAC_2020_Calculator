@@ -3,10 +3,11 @@
 %{
 #include "iostream"
 #include "string"
+#include "calc.tab.h"
+#include "./libs/methods.h"
 using namespace std;
 
 extern int yyerror (char const *s);
-#include "calc.tab.h"
 %}
 
 SEP     [,.]
@@ -16,8 +17,8 @@ NONZERO [1-9]
 
 %%
 
-({ZERO}|({NONZERO}{DIGIT}*)*){SEP}{DIGIT}* {
-                                yylval=atof(yytext); return DOUBLE;          
+({ZERO}|({NONZERO}{DIGIT}*)*){SEP}{DIGIT}+ {
+                                yylval=toDouble(yytext); return DOUBLE;          
                             }
 {ZERO}|({NONZERO}{DIGIT}*)  {   
                                 yylval=atoi(yytext); return INT; 

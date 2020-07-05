@@ -16,4 +16,3 @@ ubuntu: calc.l
 	bison -d calc.y
 	flex calc.l
 	c++ -o calc lex.yy.c calc.tab.c ./libs/methods.c -lfl
-	#gcc -o calc lex.yy.c -lfl
