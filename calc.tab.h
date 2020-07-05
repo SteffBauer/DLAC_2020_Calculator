@@ -43,6 +43,12 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 1 "calc.y"
+
+    #define YYSTYPE double
+
+#line 52 "calc.tab.h"
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -50,7 +56,7 @@ extern int yydebug;
   enum yytokentype
   {
     INT = 258,
-    FLOAT = 259,
+    DOUBLE = 259,
     POSITIVE = 260,
     PLUS = 261,
     MINUS = 262,
@@ -59,7 +65,8 @@ extern int yydebug;
     BR_LEFT = 265,
     BR_RIGHT = 266,
     OP_EVEN = 267,
-    OP_ODD = 268
+    OP_ODD = 268,
+    END = 269
   };
 #endif
 

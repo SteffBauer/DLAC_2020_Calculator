@@ -1,8 +1,11 @@
 %option noyywrap
 
 %{
-int yyerror(const char *s);
-int yyparse();
+#include "iostream"
+#include "string"
+using namespace std;
+
+extern int yyerror (char const *s);
 #include "calc.tab.h"
 %}
 
@@ -14,7 +17,7 @@ NONZERO [1-9]
 %%
 
 ({ZERO}|({NONZERO}{DIGIT}*)*){SEP}{DIGIT}* {
-                                yylval=atof(yytext); return FLOAT;          
+                                yylval=atof(yytext); return DOUBLE;          
                             }
 {ZERO}|({NONZERO}{DIGIT}*)  {   
                                 yylval=atoi(yytext); return INT; 
@@ -23,7 +26,8 @@ NONZERO [1-9]
                                 yyerror("More than one zero\n");
                             }
 "+"                         {
-                                return PLUS;
+    printf("Plus");
+                                return PLUS ;
                             }
 "-"                         {
                                 return MINUS;
@@ -46,7 +50,10 @@ NONZERO [1-9]
 "odd"                       {
                                 return OP_ODD;
                             }
-[ \t\n]+	                { 
+[\n]                        {
+                                return END;
+                            }
+[ \t]+	                { 
                                 /* Do nothing at whitespace - eat it! */
                             }    
 "E"|"e"                     {
@@ -58,20 +65,3 @@ NONZERO [1-9]
                             }
 
 %%
-
-int main() {
-    yyparse();
-    return 0;
-}
-
-/*
-int yywrap() {
-    return 0;
-}
-*/
-
-
-int yyerror(const char *errormsg) {
-    fprintf(stderr, "%s\n", errormsg);
-    exit(1);
-}

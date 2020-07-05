@@ -1,67 +1,94 @@
+%code requires{
+    #define YYSTYPE double
+}
 %{
+
+#include <math.h>
 #include <stdio.h>
-#include "calc.tab.h"
-int yylex();
-int yyerror(const char *s);
+#include "iostream"
+#include "./libs/methods.h"
+using namespace std;
+void yyerror (char const *s);
+extern int yylex (void);
+extern FILE * yyin;
+
 %}
 
-%token INT FLOAT POSITIVE
+%token INT DOUBLE POSITIVE
 %token PLUS MINUS MULT DIVIDE
 %token BR_LEFT BR_RIGHT
 %token OP_EVEN OP_ODD
+%token END
 
 %%
 
-expr:  expr term1 PLUS term2 { printf("Plus\n"); }
-    |  expr term1 MINUS term2 { printf("Minus\n"); }
-    |  term1 PLUS term2 { printf("Plus\n"); }
-    |  term1 MINUS term2 { printf("Minus\n"); }
-    |  term1 
+
+
+Input: /* empty */;
+Input: Input Line;
+
+Line: END
+Line: expr END  { 
+                    cout << "Result: "<< $1 << endl;               
+                };
+
+
+
+
+expr:  term1
+    |  term1 PLUS term2 { $$ = $1 + $3; };
+    |  term1 MINUS term2 { $$ = $1 - $3; };
     ;
-term1: term1 termextension
-    |  factor1
-    |  factor1 termextension
+term1: factor1
+    |  factor1 MULT factor2 { $$ = $1 * $3; };
+    |  factor1 DIVIDE factor2 { $$ = $1 / $3; };
     ;
-term2: term2 termextension
-    |  factor2
-    |  factor2 termextension
+term2: factor2
+    |  factor2 MULT factor2 { $$ = $1 * $3; };
+    |  factor2 DIVIDE factor2 { $$ = $1 / $3; };
     ;
 factor1:  factor2 
     |     negative
     ;
-factor2:  BR_LEFT expr BR_RIGHT
+factor2:  BR_LEFT expr BR_RIGHT { $$ = $2; };
     |     function
     |     positive
-    ;
-termextension:  MULT factor2 { printf("Mult\n"); }
-    |           DIVIDE factor2 { printf("Divide\n"); }
     ;
 function:  op_even 
     |      op_odd
     ;
-op_even:  OP_EVEN BR_LEFT expr BR_RIGHT { printf("even\n"); }
+op_even:  OP_EVEN BR_LEFT expr BR_RIGHT { printf("%f\n",$3); 
+                                          $$ = even($3); 
+                                        };
     ;
-op_odd:  OP_ODD BR_LEFT expr BR_RIGHT { printf("odd\n"); }
+op_odd:  OP_ODD BR_LEFT expr BR_RIGHT { $$ = odd($3); };
     ;
 
-negative:  MINUS positive { printf("Negative\n"); }
+negative:  MINUS positive {$$=-$2;};
     ;
-positive: INT { printf("Integer\n"); }
-    |     FLOAT { printf("Float\n"); }
+positive: INT {$$=$1;}
+    |     DOUBLE {$$=$1;}
     ;
           
 
 %%
 
-/*
-int yyerror(const char *s) {
-    fprintf(stderr, "%s\n", s);
-    return 0;
+
+void  yyerror(char const *s) {
+  printf("\n%s\n", s);
+  exit(100);
 }
-*/
-/*
-int main(void) {
+
+int main(int argc, char** argv) {
+    ++argv, --argc;
+    if(argc > 0) {
+        if( !(yyin = fopen(argv[0],"r")) ) {
+            cout<< "File input as argv not given!\n";
+            exit(255);
+        }
+    }
+
     yyparse();
+
     return 0;
 }
-*/
