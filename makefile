@@ -1,7 +1,5 @@
 CC := c++
 FILENAME := calc
-LEXFILE := calc.l
-SYNFILE := calc.y
 
 all: clean calc
 
