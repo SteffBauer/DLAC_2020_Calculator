@@ -18,8 +18,8 @@ double stringToDouble(std::string s){
     return dbl;
 }
 
-
 std::string doubleToString(double dbl) {
+	// Writing a double value in a string variable
 	std::ostringstream strs;
 	strs << dbl;
 	std::string number = strs.str();

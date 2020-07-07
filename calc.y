@@ -26,8 +26,6 @@ extern FILE * yyin;
 
 %%
 
-
-
 Input: /* empty */;
 Input: Input Line;
 
@@ -81,6 +79,5 @@ int main(int argc, char** argv) {
     }
 
     yyparse();
-
     return 0;
 }
