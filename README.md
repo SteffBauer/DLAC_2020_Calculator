@@ -33,3 +33,23 @@ digit = "1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"0";
 separator = "," | ".";
 syntax = expr;
 ```
+## Compiling and tests
+### Compiling
+To compile the final calc file, use following command:
+```
+make calc
+```
+To clean the compiled files and rebuild all, use following command:
+```
+make all
+```
+### Make use of the calculator
+```
+./calc
+```
+or
+```
+./calc testfilePositive
+```
+starts the syntactical analyzer and computes the output from the given input.
+You can exit the calculator with 'e' or 'E' followed by pressing Enter.
