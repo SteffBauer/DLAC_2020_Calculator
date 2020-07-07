@@ -36,7 +36,7 @@ double handleNumber(double dbl, int remaining) {
     std::string returnValue = "";
     bool sep=false;
 
-    int num;
+    int num, counter = 0;
     
 
     for(int i = 0; i < strlen(number.c_str()); i++) {
@@ -48,10 +48,14 @@ double handleNumber(double dbl, int remaining) {
         num = std::stoi(number.substr(i,1));
         if(num%2 == remaining){
             returnValue += number[i];
+            counter++;
         }
 
     }
     
+    if(counter == 0)
+        returnValue = '0';
+
     return std::stof(returnValue);
 }
 

@@ -53,7 +53,7 @@ NONZERO [1-9]
 [\n]                        {
                                 return END;
                             }
-[ \t]+	                { 
+[ \t]+	                    { 
                                 /* Do nothing at whitespace - eat it! */
                             }    
 "E"|"e"                     {
