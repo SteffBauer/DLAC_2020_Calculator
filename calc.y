@@ -1,14 +1,18 @@
 %code requires{
     #define YYSTYPE double
 }
+
 %{
 
 #include <math.h>
 #include <stdio.h>
 #include "iostream"
 #include "./libs/methods.h"
+
 using namespace std;
+
 void yyerror (char const *s);
+
 extern int yylex (void);
 extern FILE * yyin;
 
