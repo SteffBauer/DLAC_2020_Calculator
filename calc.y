@@ -28,10 +28,7 @@ Input: /* empty */;
 Input: Input Line;
 
 Line: END
-Line: expr END  { 
-                    cout << "Result: "<< $1 << endl;               
-                };
-
+Line: expr END  { cout << "Result: "<< $1 << endl; };
 
 expr:  term1
     |  expr PLUS term1 { $$ = $1 + $3; };
@@ -41,7 +38,6 @@ term1: factor1
     |  term1 MULT factor1 { $$ = $1 * $3; };
     |  term1 DIVIDE factor1 { $$ = $1 / $3; };
     ;
-
 factor1:  factor2 
     |     negative
     ;
@@ -49,6 +45,7 @@ factor2:  BR_LEFT expr BR_RIGHT { $$ = $2; };
     |     function
     |     positive
     ;
+
 function:  op_even 
     |      op_odd
     ;
@@ -62,10 +59,8 @@ negative:  MINUS positive {$$=-$2;};
 positive: INT {$$=$1;}
     |     DOUBLE {$$=$1;}
     ;
-          
 
 %%
-
 
 void  yyerror(char const *s) {
   printf("\n%s\n", s);

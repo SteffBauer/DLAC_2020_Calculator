@@ -1,5 +1,6 @@
 CC := c++
 FILENAME := calc
+LIB := ./libs/methods.cpp
 
 all: clean calc
 
@@ -9,4 +10,4 @@ clean:
 calc: $(FILENAME).l $(FILENAME).y
 	bison -d $(FILENAME).y
 	flex $(FILENAME).l
-	$(CC) -o $(FILENAME) lex.yy.c $(FILENAME).tab.c ./libs/methods.cpp -lfl
+	$(CC) -o $(FILENAME) lex.yy.c $(FILENAME).tab.c $(LIB) -lfl

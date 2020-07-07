@@ -1,15 +1,9 @@
 #include "methods.h"
-#include <stdio.h>
-#include <iostream>
+
 #include <sstream>
-#include <math.h>
-#include <stdlib.h>
 #include <string.h>
 #include <algorithm>
 
-#define DECPLACES 3
-
-int _factorDecPlaces = 10 * DECPLACES;
 
 
 std::string doubleToString(double dbl) {
@@ -44,13 +38,11 @@ double handleNumber(double dbl, int remaining) {
             returnValue += number[i];
             continue;
         }
-        
         num = std::stoi(number.substr(i,1));
         if(num%2 == remaining){
             returnValue += number[i];
             counter++;
         }
-
     }
     
     if(counter == 0)
