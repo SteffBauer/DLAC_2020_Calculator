@@ -18,7 +18,7 @@ NONZERO [1-9]
 %%
 
 ({ZERO}|({NONZERO}{DIGIT}*)*){SEP}{DIGIT}+ {
-                                yylval=toDouble(yytext); return DOUBLE;          
+                                yylval=stringToDouble(yytext); return DOUBLE;          
                             }
 {ZERO}|({NONZERO}{DIGIT}*)  {   
                                 yylval=atoi(yytext); return INT; 

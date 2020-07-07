@@ -2,4 +2,4 @@
 
 double even(double number);
 double odd(double number);
-double toDouble(std::string s);
+double stringToDouble(std::string s);
