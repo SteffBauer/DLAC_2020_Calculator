@@ -61,7 +61,6 @@ double handleNumber(double dbl, int remaining) {
     return std::stof(returnValue);
 }
 
-
 double even(double number){
     // The encapsulated function is called with 0 as value for the remaining part
     return handleNumber(number, 0);

@@ -18,7 +18,7 @@ extern FILE * yyin;
 
 %}
 
-%token INT DOUBLE POSITIVE
+%token INT DOUBLE
 %token PLUS MINUS MULT DIVIDE
 %token BR_LEFT BR_RIGHT
 %token OP_EVEN OP_ODD
