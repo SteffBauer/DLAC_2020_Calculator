@@ -33,12 +33,16 @@ Line: END
 Line: expr END  { cout << "Result: "<< $1 << endl; };
 
 expr:  term1
-    |  expr PLUS term1 { $$ = $1 + $3; };
-    |  expr MINUS term1 { $$ = $1 - $3; };
+    |  expr PLUS term2 { $$ = $1 + $3; };
+    |  expr MINUS term2 { $$ = $1 - $3; };
     ;
 term1: factor1
     |  term1 MULT factor1 { $$ = $1 * $3; };
     |  term1 DIVIDE factor1 { $$ = $1 / $3; };
+    ;
+term2: factor2
+    |  term2 MULT factor2 { $$ = $1 * $3; };
+    |  term2 DIVIDE factor2 { $$ = $1 / $3; };
     ;
 factor1:  factor2 
     |     negative
@@ -66,7 +70,7 @@ positive: INT {$$=$1;}
 
 void  yyerror(char const *s) {
   printf("\n%s\n", s);
-  exit(100);
+  //exit(100);
 }
 
 int main(int argc, char** argv) {
