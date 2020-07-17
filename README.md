@@ -1,6 +1,6 @@
-# DLAC_2020_SyntaxAnalyzer
+# DLAC_2020_Calculator
 ## Introduction
-This is the Repository for the syntactical analyzer of a simple calculator.
+This is the Repository for a simple calculator.
 Beside the methods for adding and multiplying integers, the modifications below were made.
 ## Modifications
 - Calculating with negative numbers
@@ -51,5 +51,5 @@ or
 ```
 ./calc testfilePositive
 ```
-starts the syntactical analyzer and computes the output from the given input.
+starts the calculator and computes the output from the given input.
 You can exit the calculator with 'e' or 'E' followed by pressing Enter.
