@@ -39,6 +39,15 @@ NONZERO [1-9]
 "/"                         {
                                 return DIVIDE;
                             }
+"%"                         {
+                                return MODULO;
+                            }
+"^"                         {
+                                return POWER;
+                            }
+"sqr"                       {
+                                return SQR;
+                            }
 "("                         {
                                 return BR_LEFT;
                             }
