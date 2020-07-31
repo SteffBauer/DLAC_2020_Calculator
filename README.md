@@ -6,6 +6,8 @@ Beside the methods for adding and multiplying integers, the modifications below 
 - Calculating with negative numbers
 - Support for decimal numbers (comma/point separated)
 - Division and Multiplication ("/" and "*")
+- Power and Remainder ("^" and "%")
+- Sqareroot ("sqr")
 - Filter even numbers: Even(1648) -> 648
 - Filiter odd numbers: Odd(1648) -> 1
 ## The EBNF grammar
@@ -15,11 +17,12 @@ term1 = factor1, {termextension};
 term2 = factor2, {termextension};
 factor1 = factor2 | negative;
 factor2 = "(", expr, ")" | function | positive;
-termextension = ("*" | "/"), factor2;
+termextension = ("*" | "/" | "%" | "^"), factor2;
 
-function = even | odd;
+function = even | odd | sqr;
 even = "even(", expr, ")";
 odd = "odd(", expr, ")";
+sqr = "sqr(", expr, ")";
 
 negative = "-", positive;
 positive = number | float;
